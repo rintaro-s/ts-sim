@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useReducer, Dispatch, ReactNode } from 'react';
 
 // ゲームの状態の型定義

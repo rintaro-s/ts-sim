@@ -1,3 +1,5 @@
+"use client";
+
 import { useContext } from 'react';
 import { GameContext } from '../../contexts/GameContext';
 import { Progress } from '../ui/progress';

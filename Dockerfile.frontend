@@ -1,10 +1,17 @@
-FROM node:20-alpine
+FROM node:20-bookworm
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# 必要な開発ツールをインストール (Debianベース)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm install -g npm@latest
+RUN npm ci
 
 COPY . .
 
@@ -13,3 +20,4 @@ RUN npm run build
 EXPOSE 3000
 
 CMD ["npm", "start"]
+

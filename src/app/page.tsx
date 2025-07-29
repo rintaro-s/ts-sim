@@ -1,3 +1,5 @@
+"use client";
+
 import { useContext } from 'react';
 import { GameContext } from '../contexts/GameContext';
 import GameGrid from '../components/game/GameGrid';
