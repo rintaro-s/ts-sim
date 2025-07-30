@@ -12,6 +12,8 @@ RUN bundle clean --force
 
 COPY . .
 
+RUN bundle exec rails new . --force --api
+
 EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

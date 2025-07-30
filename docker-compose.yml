@@ -6,12 +6,10 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=development
-    depends_on:
-      - nginx
+      - NODE_ENV=production
+    
 
   nginx:
     build:
@@ -39,7 +37,7 @@ services:
       context: ./ruby-server
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - ./game.db:/app/game.db
 
@@ -56,8 +54,6 @@ services:
     build:
       context: ./apache
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
 
 volumes:
   game_db:
